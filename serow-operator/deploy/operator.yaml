@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serow-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: serow-operator
+  template:
+    metadata:
+      labels:
+        name: serow-operator
+    spec:
+      serviceAccountName: serow-operator
+      containers:
+        - name: serow-operator
+          image: REPLACE_IMAGE
+          ports:
+          - containerPort: 60000
+            name: metrics
+          command:
+          - serow-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_NAME
+              value: "serow-operator"

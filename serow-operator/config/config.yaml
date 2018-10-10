@@ -1,0 +1,3 @@
+apiVersion: serow.literalice.com/v1alpha1
+kind: Serow
+projectName: serow-operator

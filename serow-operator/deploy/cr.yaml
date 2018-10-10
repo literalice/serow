@@ -1,0 +1,4 @@
+apiVersion: "serow.literalice.com/v1alpha1"
+kind: "Serow"
+metadata:
+  name: "example"
